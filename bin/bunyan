@@ -106,8 +106,6 @@ var gUsingConditionOpts = false;
 var pager = null;
 var stdout = process.stdout;
 
-// Whether we are reading from stdin.
-var readingStdin = false;
 
 
 
@@ -1105,7 +1103,6 @@ function drainStdoutAndExit(code) {
  * @param callback {Function} `function ()`
  */
 function processStdin(opts, stylize, callback) {
-    readingStdin = true;
     var leftover = '';  // Left-over partial line from last chunk.
     var stdin = process.stdin;
     stdin.resume();
