@@ -1439,14 +1439,7 @@ function cleanupAndExit(code, signal) {
 //---- mainline
 
 process.on('SIGINT', function () {
-    /**
-     * Ignore SIGINT (Ctrl+C) if processing stdin -- we should process
-     * remaining output from preceding process in the pipeline and
-     * except *it* to close.
-     */
-    if (!readingStdin) {
-        cleanupAndExit(1, 'SIGINT');
-    }
+    cleanupAndExit(1, 'SIGINT');
 });
 process.on('SIGQUIT', function () { cleanupAndExit(1, 'SIGQUIT'); });
 process.on('SIGTERM', function () { cleanupAndExit(1, 'SIGTERM'); });
